@@ -1,6 +1,6 @@
 // Example.jsx
 import React, { useState } from "react";
-import { Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
+import {Pie, PieChart, ResponsiveContainer, Sector, XAxis, YAxis} from "recharts";
 
 const RADIAN = Math.PI / 180;
 
@@ -93,7 +93,7 @@ export default function MyPieChard({data}) {
 
     return (
         // give the wrapper a fixed height — ResponsiveContainer with 100% height needs this
-        <div className="w-full h-64 sm:h-80 lg:h-96">
+        <div className="w-full h-64 sm:h-80 lg:h-96 flex justify-center items-center ">
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                     <Pie
@@ -102,13 +102,19 @@ export default function MyPieChard({data}) {
                         cy="50%"
                         innerRadius={60}
                         outerRadius={80}
-                        fill="#8884d8"
+                        fill="#3F72AF"
                         dataKey="value"
                         activeIndex={activeIndex}
                         activeShape={renderActiveShape}
                         onMouseEnter={onPieEnter}
                         onMouseLeave={onPieLeave}
                     />
+                    {/*<XAxis*/}
+                    {/*    label={{*/}
+                    {/*        value: "Distribution of qustions by difficulty",*/}
+                    {/*        style: { textAnchor: 'middle', fill: '#374151', fontSize: 15, fontWeight: 600},*/}
+                    {/*    }}*/}
+                    {/*/>*/}
                 </PieChart>
             </ResponsiveContainer>
         </div>

@@ -24,18 +24,19 @@ const CustomTooltip = ({ active, payload }) => {
 
 function Example({ data }) {
     return (
-        <div className="w-[100%] h-40 sm:h-52 lg:h-64 border-b-1">
+        <div className="w-[100%] h-40 sm:h-52 lg:h-64 ">
             <ResponsiveContainer>
                 <BarChart
                     data={data}
                     margin={{
-                        top: 5,
+
                         right: 30,
                         left: 20,
 
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis/>
                     <YAxis
                         label={{
                             value: "Number of Questions",
@@ -45,7 +46,7 @@ function Example({ data }) {
                         }}
                     />
                     <Tooltip content={<CustomTooltip />} />
-                    <Bar dataKey="value" barSize={20} fill="#8884d8" />
+                    <Bar dataKey="value" barSize={20} fill="#3F72AF" />
                 </BarChart>
             </ResponsiveContainer>
         </div>

@@ -5,6 +5,7 @@ import Header from "./Header.jsx";
 import QuestionCard from "./QuestionCard.jsx";
 import MyPieChart from "./MyPieChard.jsx";
 import ShowQuestions from "./ShowQuestions.jsx";
+import Footer from "./Footer.jsx";
 
 
 //See the distribution of questions by category
@@ -115,18 +116,25 @@ function TriviaStats() {
     }, []);
 
 
-    return (<>
+    return (<div className="flex flex-col min-h-screen">
             <Header categories={getAllCategories(data)} onSelect={onSelect} />
             {targetCategory.length <= 0 ?
                 (
-                <div className="flex p-3">
-                    <Example data={setDataCategory(data)} />
-                    <div className="w-[60%]"><MyPieChart data={setDataDifficulty(data)} /></div>
-                </div>
+                    <div className="flex-grow">
+                        <p className="text-center text-3xl text-[#374151] font-semibold pt-5">Distribution of questions by category and difficulty</p>
+                        <div className="flex items-center justify-center  px-5 gap-6 ">
+                            <div className="flex flex-col w-full">
+                                <Example data={setDataCategory(data)} />
+                            </div>
+                            <div className="w-[60%]">
+                                <MyPieChart data={setDataDifficulty(data)} />
+                            </div>
+                        </div>
+                    </div>
                 )
                     :
                 (
-                <div className="">
+                <div className="flex-grow">
                     <div className="flex p-3">
                         <MyPieChart data={setDataQuestionType(targetCategory)} />
                         <MyPieChart data={setDataDifficulty(targetCategory)} />
@@ -136,8 +144,8 @@ function TriviaStats() {
 
                 </div>
             )}
-
-        </>
+        <Footer/>
+        </div>
     );
 }
 
