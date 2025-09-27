@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import Example from "./Example.jsx";
+import MyBarChart from "../components/MyBarChart.jsx";
 import he from "he";
-import Header from "./Header.jsx";
-import QuestionCard from "./QuestionCard.jsx";
-import MyPieChart from "./MyPieChard.jsx";
-import ShowQuestions from "./ShowQuestions.jsx";
-import Footer from "./Footer.jsx";
+import Header from "../components/Header.jsx";
+import QuestionCard from "../components/QuestionCard.jsx";
+import MyPieChart from "../components/MyPieChard.jsx";
+import ShowQuestions from "../components/ShowQuestions.jsx";
+import Footer from "../components/Footer.jsx";
 
-
+function capitalize(str) {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 //See the distribution of questions by category
 function setDataCategory(data){
     const map = new Map();
@@ -21,14 +24,14 @@ function setDataCategory(data){
     const ans = [];
     for (const [category, count] of map.entries()) {
         ans.push({
-            name: he.decode(category),
+            name: capitalize(he.decode(category)),
             value: count
         });
     }
 
     return ans;
 }
-//See the distribution of questions by difficulty
+
 function setDataDifficulty(data){
     const map = new Map();
     for (let i=0;i<data.length;i++){
@@ -41,7 +44,7 @@ function setDataDifficulty(data){
     const ans = [];
     for (const [difficulty, count] of map.entries()) {
         ans.push({
-            name: difficulty,
+            name: capitalize(difficulty),
             value: count
         });
     }
@@ -83,6 +86,7 @@ function TriviaStats() {
     const [data, setData] = useState([]);
     const [stats, setStats] = useState(null);
     const [targetCategory, setTargetCategory] = useState([]);
+    const [selected, setSelected] = useState("All");
 
     function onSelect(targetCategoryName){
         const ans = [];
@@ -94,6 +98,7 @@ function TriviaStats() {
         }
         console.log(ans);
         setTargetCategory(ans);
+        setSelected(targetCategoryName);
     }
 
     useEffect(() => {
@@ -117,14 +122,14 @@ function TriviaStats() {
 
 
     return (<div className="flex flex-col min-h-screen">
-            <Header categories={getAllCategories(data)} onSelect={onSelect} />
+            <Header categories={getAllCategories(data)} onSelect={onSelect} setSelected={setSelected} selected={selected} />
             {targetCategory.length <= 0 ?
                 (
                     <div className="flex-grow">
-                        <p className="text-center text-3xl text-[#374151] font-semibold pt-5">Distribution of questions by category and difficulty</p>
+                        <p className="bg-blue-300/25 pb-2 text-center text-3xl text-[#374151] font-semibold pt-5 font-sans">Distribution of {data.length} questions by category and difficulty</p>
                         <div className="flex items-center justify-center  px-5 gap-6 ">
                             <div className="flex flex-col w-full">
-                                <Example data={setDataCategory(data)} />
+                                <MyBarChart data={setDataCategory(data)} onSelect={onSelect} />
                             </div>
                             <div className="w-[60%]">
                                 <MyPieChart data={setDataDifficulty(data)} />
@@ -135,6 +140,7 @@ function TriviaStats() {
                     :
                 (
                 <div className="flex-grow">
+                    <p className="bg-blue-300/25 pb-2 text-center text-3xl text-[#374151] font-semibold pt-5 font-sans">Distribution of type and difficulty for category {he.decode(targetCategory[0].category)}</p>
                     <div className="flex p-3">
                         <MyPieChart data={setDataQuestionType(targetCategory)} />
                         <MyPieChart data={setDataDifficulty(targetCategory)} />

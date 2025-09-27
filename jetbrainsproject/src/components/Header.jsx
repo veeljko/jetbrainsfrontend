@@ -1,8 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 
-export default function Header({ categories, onSelect }) {
-    const [selected, setSelected] = useState("All");
+export default function Header({ categories, onSelect, selected, setSelected}) {
 
     const handleChange = (e) => {
         const value = e.target.value;

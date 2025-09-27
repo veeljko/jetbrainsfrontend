@@ -9,7 +9,7 @@ function QuestionCard({ question }) {
     const decodedIncorrect = incorrect_answers.map((ans) => he.decode(ans));
 
     return (
-        <div className="bg-blue-300/15 rounded-xl shadow-md p-4 space-y-3 border border-gray-200">
+        <div className="bg-blue-300/15 rounded-xl shadow-md hover:shadow-2xl p-4 space-y-3 border border-gray-200">
             {/* Category + Difficulty */}
             <div className="flex justify-between items-center text-sm text-gray-600 ">
                 <span className="font-semibold">{he.decode(category)}</span>
@@ -19,7 +19,7 @@ function QuestionCard({ question }) {
             </div>
 
             <p className="font-medium text-gray-800">{decodedQuestion}</p>
-            <p className="text-xs text-gray-500 italic">Type: {type}</p>
+            <p className="text-xs text-gray-500 italic">Type: {type === "boolean" ? "single" : type}</p>
 
             <div className="mt-2">
                 <p className="text-sm font-semibold text-green-600">

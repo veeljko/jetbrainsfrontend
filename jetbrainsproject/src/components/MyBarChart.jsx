@@ -22,7 +22,12 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 
-function Example({ data }) {
+
+function MyBarChart({ data,  onSelect }) {
+    const handleBarClick = ({name}) => {
+        console.log(name);
+        onSelect(name);
+    }
     return (
         <div className="w-[100%] h-40 sm:h-52 lg:h-64 ">
             <ResponsiveContainer>
@@ -46,11 +51,11 @@ function Example({ data }) {
                         }}
                     />
                     <Tooltip content={<CustomTooltip />} />
-                    <Bar dataKey="value" barSize={20} fill="#3F72AF" />
+                    <Bar dataKey="value" barSize={20} fill="#3F72AF" onClick={handleBarClick} />
                 </BarChart>
             </ResponsiveContainer>
         </div>
     );
 }
 
-export default Example;
+export default MyBarChart;

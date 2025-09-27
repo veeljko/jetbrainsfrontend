@@ -1,4 +1,4 @@
-// Example.jsx
+// MyBarChart.jsx
 import React, { useState } from "react";
 import {Pie, PieChart, ResponsiveContainer, Sector, XAxis, YAxis} from "recharts";
 
