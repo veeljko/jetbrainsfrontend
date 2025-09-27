@@ -125,9 +125,9 @@ function TriviaStats() {
             <Header categories={getAllCategories(data)} onSelect={onSelect} setSelected={setSelected} selected={selected} />
             {targetCategory.length <= 0 ?
                 (
-                    <div className="flex-grow">
+                    <div className="flex-grow ">
                         <p className="bg-blue-300/25 pb-2 text-center text-3xl text-[#374151] font-semibold pt-5 font-sans">Distribution of {data.length} questions by category and difficulty</p>
-                        <div className="flex items-center justify-center  px-5 gap-6 ">
+                        <div className="flex items-center justify-center px-5 gap-6 bg-blue-200/15 shadow-mg rounded-lg mb-5">
                             <div className="flex flex-col w-full">
                                 <MyBarChart data={setDataCategory(data)} onSelect={onSelect} />
                             </div>
@@ -135,6 +135,7 @@ function TriviaStats() {
                                 <MyPieChart data={setDataDifficulty(data)} />
                             </div>
                         </div>
+                        <ShowQuestions questions={data}/>
                     </div>
                 )
                     :
