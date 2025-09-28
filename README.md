@@ -16,6 +16,6 @@ Tech Stack:
 -Recharts for data visualization  
 -Open Trivia DB API as data source  
 
-
-https://github.com/user-attachments/assets/e7b42b5f-be79-4ed5-9b8f-63d25fa2daf6
+[
+https://bc577437.jetbrainsfrontend.pages.dev/
 
