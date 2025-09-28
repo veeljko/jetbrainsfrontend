@@ -5,7 +5,7 @@ export default function ShowQuestions({ questions }) {
     const [show, setShow] = useState(false);
     const [difficulty, setDifficulty] = useState("");
     const [type, setType] = useState("");
-    const [sortBy, setSortBy] = useState("difficulty"); // default sort option
+    const [sortBy, setSortBy] = useState("difficulty");
     const [page, setPage] = useState(1);
     const pageSize = 6;
 
@@ -49,8 +49,8 @@ export default function ShowQuestions({ questions }) {
                        hover:bg-[#112D4E] active:scale-95 transition mb-5"
                 >
                     {show
-                        ? `Hide ${filteredQuestions.length} Questions`
-                        : `Show ${filteredQuestions.length} Questions`}
+                        ? `Hide ${filteredQuestions.length} Question${filteredQuestions.length > 1 ? "s" : ""}`
+                        : `Show ${filteredQuestions.length} Question${filteredQuestions.length > 1 ? "s" : ""}`}
                 </button>
             </div>
 

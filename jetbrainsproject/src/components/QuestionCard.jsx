@@ -1,16 +1,16 @@
-import he from "he"; // decode HTML entities like &amp;, &quot;
+import he from "he";
 
 function QuestionCard({ question }) {
     const { type, difficulty, category, question: q, correct_answer, incorrect_answers } = question;
 
-    // Decode text to handle HTML entities
+
     const decodedQuestion = he.decode(q);
     const decodedCorrect = he.decode(correct_answer);
     const decodedIncorrect = incorrect_answers.map((ans) => he.decode(ans));
 
     return (
         <div className="bg-blue-300/15 rounded-xl shadow-md hover:shadow-2xl p-4 space-y-3 border border-gray-200">
-            {/* Category + Difficulty */}
+
             <div className="flex justify-between items-center text-sm text-gray-600 ">
                 <span className="font-semibold">{he.decode(category)}</span>
                 <span className="capitalize px-2 py-0.5 rounded-full bg-blue-300/25">

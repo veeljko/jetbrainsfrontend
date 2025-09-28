@@ -19,7 +19,7 @@ export default function Header({ categories, onSelect, selected, setSelected}) {
 
 
 
-            <div className="flex flex-col md:flex-row items-center gap-2 overflow-clip">
+            <div className="flex flex-col lg:flex-row items-center gap-2 overflow-clip">
                 <label
                     htmlFor="category-select"
                     className="text-sm font-medium text-gray-600"
@@ -30,7 +30,7 @@ export default function Header({ categories, onSelect, selected, setSelected}) {
                     id="category-select"
                     value={selected}
                     onChange={handleChange}
-                    className="border border-gray-500 bg-gray-100 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-500 bg-gray-100 rounded-lg px-3 py-2 text-sm focus:outline-none "
                 >
                     <option value="All">All</option>
                     {categories.map((cat, i) => (

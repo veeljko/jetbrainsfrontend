@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 function MyBarChart({ data,  onSelect }) {
     const handleBarClick = ({name}) => {
-        console.log(name);
+
         onSelect(name);
     }
     return (

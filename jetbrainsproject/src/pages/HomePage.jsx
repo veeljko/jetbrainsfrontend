@@ -11,7 +11,7 @@ function capitalize(str) {
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
-//See the distribution of questions by category
+
 function setDataCategory(data){
     const map = new Map();
     for (let i=0;i<data.length;i++){
@@ -96,7 +96,7 @@ function TriviaStats() {
                 ans.push(data[i]);
             }
         }
-        console.log(ans);
+        // console.log(ans);
         setTargetCategory(ans);
         setSelected(targetCategoryName);
     }
@@ -110,7 +110,7 @@ function TriviaStats() {
                 }
                 const d = await res.json();
                 setData((prev) => [...d.results]);
-                console.log(d.results);
+                // console.log(d.results);
             } catch (err) {
 
             } finally {
@@ -127,8 +127,8 @@ function TriviaStats() {
                 (
                     <div className="flex-grow ">
                         <p className="bg-blue-300/25 pb-2 text-center text-3xl text-[#374151] font-semibold pt-5 font-sans">Distribution of {data.length} questions by category and difficulty</p>
-                        <div className="flex items-center justify-center px-5 gap-6 bg-blue-200/15 shadow-mg rounded-lg mb-5">
-                            <div className="flex flex-col w-full">
+                        <div className="flex flex-col sm:pt-0 pt-13 md:flex-row items-center justify-center px-5 gap-6 bg-blue-200/15 shadow-mg rounded-lg mb-5">
+                            <div className="flex flex-col w-full h-full">
                                 <MyBarChart data={setDataCategory(data)} onSelect={onSelect} />
                             </div>
                             <div className="w-[60%]">
@@ -142,7 +142,7 @@ function TriviaStats() {
                 (
                 <div className="flex-grow">
                     <p className="bg-blue-300/25 pb-2 text-center text-3xl text-[#374151] font-semibold pt-5 font-sans">Distribution of type and difficulty for category {he.decode(targetCategory[0].category)}</p>
-                    <div className="flex p-3">
+                    <div className="flex p-3 flex-col sm:flex-row">
                         <MyPieChart data={setDataQuestionType(targetCategory)} />
                         <MyPieChart data={setDataDifficulty(targetCategory)} />
                     </div>
